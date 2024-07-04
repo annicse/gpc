@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Calculator | Galdag</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Price Calculation</h1>
+        <label for="conversionRateInput">Conversion Rate (1 Euro to NOK):</label>
+        <input type="number" id="conversionRateInput" oninput="convertAndMultiply()">
+        <label for="euroInput">Amount in Euro:</label>
+        <input type="number" id="euroInput" oninput="convertAndMultiply()">
+        <div id="result" class="result">NOK:</div>
+    </div>
+    <script>
+        function convertAndMultiply() {
+            const euroInput = document.getElementById('euroInput').value;
+            const conversionRateInput = document.getElementById('conversionRateInput').value;
+            if (euroInput && conversionRateInput) {
+                const nokValue = euroInput * conversionRateInput;
+                const result = nokValue * 2;
+                document.getElementById('result').innerText = `NOK: ${result.toFixed(2)}`;
+            } else {
+                document.getElementById('result').innerText = 'Please enter both Euro amount and conversion rate.';
+            }
+        }
+    </script>
+</body>
+</html>
